@@ -29,10 +29,61 @@ public class Lab1 {
         Random random = new Random();
         for(int i=0; i<userInt;i++)
         {
-            a[i] = random.nextInt(1000+1000)-1000;
+            arr[i] = random.nextInt(1000+1000)-1000;
         }
 
         Arrays.sort(arr);
+
+        long startTime = System.nanoTime();
+        for (int i = 0; i < 10; i++)
+        {
+//System.out.println("Iteration #" + (i+1) + ": ");
+            int aIndex = random.nextInt(arr.length);
+            int Key = arr[aIndex];
+            int linInd = linearSearch(arr,Key);
+            if (linInd == -1)
+            {
+                System.out.println("Element not found");
+            }
+            else
+            {
+                System.out.println("Used linear search to find " + Key + " at index: "
+                        + linInd);
+            }
+        }
+        long endTime = System.nanoTime();
+        long duration = (endTime-startTime);
+
+        for (int i = 0; i < 10; i++)
+        {
+//System.out.println("Iteration #" + (i+1) + ": ");
+            int aIndex = random.nextInt(arr.length);
+            int Key = arr[aIndex];
+            int linInd = linearSearch(arr,Key);
+            if (linInd == -1)
+            {
+                System.out.println("Element not found");
+            }
+            else
+            {
+                System.out.println("Used linear search to find " + Key + " at index: "
+                        + linInd);
+            }
+        }
+
+        endTime = System.currentTimeMillis();
+        duration = (endTime-startTime);
+        binTime = duration;
+
+        System.out.println("Linear time is: ");
+        long newtime = linTime/1000000; //conversion of to milliseconds
+        newtime = newtime/100; // average, by 100 for the 100 iterations
+        System.out.println(newtime + "milliseconds");
+        System.out.println("Binary time is: ");
+        long newtime2 = binTime/1000000; //conversion of to milliseconds
+        newtime2 = newtime2/100; // average, by 100 for the 100 iterations
+        System.out.println(newtime2 + "milliseconds");
+//System.out.println(binTime);
 
 
 
