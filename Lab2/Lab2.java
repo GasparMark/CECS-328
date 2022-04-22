@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Lab2 {
 
     public static void main(String[] args) {
-        // write your code here
 
         int userDec = printMenu();
         int options [] = {1,2,3};
@@ -31,7 +30,11 @@ public class Lab2 {
 
     }
 
-    public static int printMenu()
+    /**
+     * Print statement for user and returns their response
+     * @return decision based on int value
+     */
+    public static int printMenu() //gives options for users
     {
         System.out.println("1 for prompt 1, 2 for prompt 2, 3 to quit");
         Scanner val = new Scanner(System.in);
@@ -39,6 +42,11 @@ public class Lab2 {
         return userDes;
     }
 
+    /**
+     * Find the upperbound of their squareroot of the value (meaning decimals are rounded up)
+     * @param val - the value that the user wants the sqrt value of
+     * @return upperbound value or exact value if a perfect sqrt
+     */
     public static int findUpperBound(int val)
     {
         if (val >= 1 && val <= 3)
@@ -57,6 +65,12 @@ public class Lab2 {
             }
         }
 
+        /*
+        lowerbound - lower limit that it can possibly be
+        upperbound - upper limit that it can possibly be, intialized as val
+        mid - val used to determine if it is closer to upperbound or lowerbound
+        As you calculate more, you can shrink the range until you find the answer
+         */
         int lowerBound = 0;
         int upperBound = val;
         int mid;
