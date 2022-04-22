@@ -21,6 +21,8 @@ public class Lab2 {
             double ans = Math.ceil(Math.sqrt((double)userVal));
             System.out.println("The answer should be: " + ans);
 
+            int upperBound = findUpperBound(userVal);
+
             System.out.println("Enter n if you dont want to continue: ");
             continu = nr.nextLine().charAt(0);
         }
@@ -33,5 +35,48 @@ public class Lab2 {
         Scanner val = new Scanner(System.in);
         int userDes = val.nextInt();
         return userDes;
+    }
+
+    public static int findUpperBound(int val)
+    {
+        if (val >= 1 && val <= 3)
+        {
+            if(val == 1)
+            {
+                return 1;
+            }
+            else if (val == 2)
+            {
+                return 2;
+            }
+            else
+            {
+                return 3;
+            }
+        }
+
+        int lowerBound = 0;
+        int upperBound = val;
+        int mid;
+
+        while (lowerBound == 0)
+        {
+            mid = (lowerBound + upperBound)/2;
+
+            if (mid * mid == val)
+            {
+                return mid;
+            }
+            else if (mid * mid > val)
+            {
+                upperBound = mid;
+            }
+            else if (mid * mid < val)
+            {
+                lowerBound = mid;
+            }
+        }
+
+        return upperBound;
     }
 }
