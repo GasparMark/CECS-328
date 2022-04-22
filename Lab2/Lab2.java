@@ -2,24 +2,20 @@ public class Lab2 {
 
     public static void main(String[] args) {
         // write your code here
-        System.out.println("Hellooooo :) ..........");
-
         Scanner sc = new Scanner(System.in);
-        long linTime = 0;
-        long binTime = 0;
 
-        System.out.println("Enter a positive number: ");
+        char continu = 'y';
 
-        int userInt = sc.nextInt();
-
-        System.out.println("The value entered was " + userInt);
-
-        while(userInt <= 0)
+        while (continu ! = 'n')
         {
-            System.out.println("Enter a positive integer: ");
-            userInt = sc.nextInt();
+            System.out.println("Enter a positive number that you want the sqrt of:");
+            int userVal = sc.nextInt();
+            double ans = Math.ceil(Math.sqrt((double)userInt));
+            System.out.println("The answer should be: " + ans);
+
+            System.out.println("Enter e if you dont want to continue: ");
+            continu = nr.nextLine().charAt(0);
         }
 
-        int arr [] = new int [userInt];
-   
+    }
 }
