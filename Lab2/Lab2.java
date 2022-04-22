@@ -22,6 +22,8 @@ public class Lab2 {
             System.out.println("The answer should be: " + ans);
 
             int upperBound = findUpperBound(userVal);
+            System.out.println("The answer based on function is: " + upperBound);
+
 
             System.out.println("Enter n if you dont want to continue: ");
             continu = nr.nextLine().charAt(0);
@@ -74,6 +76,32 @@ public class Lab2 {
             else if (mid * mid < val)
             {
                 lowerBound = mid;
+            }
+        }
+
+        while (lowerBound <= upperBound)
+        {
+            mid = (lowerBound + upperBound)/2;
+            if (mid * mid < val)
+            {
+                lowerBound = mid;
+            }
+            else if (mid * mid > val)
+            {
+                if((mid-1)*(mid-1) < val)
+                {
+                    return mid;
+                }
+                upperBound = mid;
+            }
+
+            if (mid * mid == val)
+            {
+                return mid;
+            }
+            if (upperBound*upperBound>val && (upperBound-1)*(upperBound-1)<val)
+            {
+                return upperBound;
             }
         }
 
