@@ -4,10 +4,6 @@ public class Lab2 {
 
     public static void main(String[] args) {
 
-        int userDec = printMenu();
-        int options [] = {1,2,3};
-        System.out.println("User chose decision " + userDec);
-
         Scanner sc = new Scanner(System.in);
         Scanner nr = new Scanner(System.in);
 
@@ -23,27 +19,39 @@ public class Lab2 {
             int upperBound = findUpperBound(userVal);
             System.out.println("The answer based on function is: " + upperBound);
 
-
             System.out.println("Enter n if you dont want to continue: ");
             continu = nr.nextLine().charAt(0);
         }
 
-    }
+        int[] a = new int[]{0,1,3,6,8,9};
+        int m = 10;
+        int a1 = findIndexOutOfOrder(a,m);
+        System.out.println("Output for a1: " + a1);
+        //Output: 2
 
-    /**
-     * Print statement for user and returns their response
-     * @return decision based on int value
-     */
-    public static int printMenu() //gives options for users
-    {
-        System.out.println("1 for prompt 1, 2 for prompt 2, 3 to quit");
-        Scanner val = new Scanner(System.in);
-        int userDes = val.nextInt();
-        return userDes;
+        int[] b = new int[]{2,5,7,11};
+        int m2 =15;
+        int b2 = findIndexOutOfOrder(b,m2);
+        System.out.println("Output for b2: " + b2);
+        //output: 0
+
+        int[] c = new int[]{0,1,2,3,4};
+        int m3 = 8;
+        int c1 = findIndexOutOfOrder(c,m3);
+        System.out.println("Output for c1: " + c1);
+        //output: 5
+
+        int[] d = new int[]{12};
+        int m4 = 13;
+        int d1 = findIndexOutOfOrder(d,m4);
+        System.out.println("Output for d1: " + d1);
+        //output: 0
+
     }
 
     /**
      * Find the upperbound of their squareroot of the value (meaning decimals are rounded up)
+     * Time complexity - O (log n)
      * @param val - the value that the user wants the sqrt value of
      * @return upperbound value or exact value if a perfect sqrt
      */
@@ -120,5 +128,51 @@ public class Lab2 {
         }
 
         return upperBound;
+    }
+
+    /**
+     * Find the index where the value and the index don't match up
+     * Time Complexity - O(log n)
+     * @param arr - array of int that are used a reference
+     * @param max - max value of every number in arr has to be smaller and match index
+     * @return index where the value doesn't correspond correctly
+     */
+    public static int findIndexOutOfOrder(int [] arr, int max)
+    {
+        int upperBound = arr.length-1;
+        int midBound;
+        int lowerBound = 0;
+        int currentMax = 0;
+
+        while (lowerBound <= upperBound)
+        {
+            midBound = (lowerBound + upperBound)/2;
+            if (midBound == upperBound && upperBound == lowerBound)
+            {
+                if(midBound < max && arr[0] == 0)
+                {
+                    return midBound + 1;
+                }
+                return midBound;
+            }
+
+            /*
+             when they don't equal eachother there is a discrepancy and the index and the value doesn't match up
+             meanign that one the left side of the halfway point is wrong
+             */
+            if (arr[midBound] != midBound)
+            {
+                if (midBound > currentMax)
+                {
+                    currentMax = midBound;
+                }
+                upperBound = midBound - 1;
+            }
+            else if(arr[midBound] == midBound)
+            {
+                lowerBound = midBound + 1;
+            }
+        }
+        return currentMax;
     }
 }
