@@ -50,6 +50,7 @@ public class Lab2 {
     }
 
     /**
+     * PROMPT 1 ANSWER FUNCTION
      * Find the upperbound of their squareroot of the value (meaning decimals are rounded up)
      * Time complexity - O (log n)
      * @param val - the value that the user wants the sqrt value of
@@ -131,6 +132,7 @@ public class Lab2 {
     }
 
     /**
+     * PROMPT 2 ANSWER FUNCTION
      * Find the index where the value and the index don't match up
      * Time Complexity - O(log n)
      * @param arr - array of int that are used a reference
